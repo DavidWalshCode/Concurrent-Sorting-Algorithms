@@ -14,7 +14,7 @@ func main() {
 	fmt.Println("Sorting 300 million numbers...")
 	times := make([]time.Duration, numRuns)
 	for i := 0; i < numRuns; i++ {
-		slice := generateSlice(300000000) //takes 5-10 seconds to sort for optimised algorithms
+		slice := generateSlice(30000) //takes 5-10 seconds to sort for optimised algorithms
 		startTime := time.Now()
 
 		//Insert Algorithm Here
