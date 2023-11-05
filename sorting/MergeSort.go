@@ -1,10 +1,8 @@
 package sorting
 
-import (
-	"sync"
-)
+import "sync"
 
-// Concurrent implementation of the merge sort algorithm
+// Concurrent merge sort algorithm
 func MergeSort(data []int) []int {
 	// If the data slice is empty or has one element, it's already sorted
 	if len(data) <= 1 {
