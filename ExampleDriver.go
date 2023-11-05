@@ -5,6 +5,7 @@ import (
 	"math/rand"
 	"os"
 	"sort"
+	"sync"
 	"time"
 )
 
@@ -18,7 +19,7 @@ func main() {
 		startTime := time.Now()
 
 		//Insert Algorithm Here
-		mySort(slice)
+		myMergeSort(slice)
 
 		time := time.Since(startTime)
 
@@ -61,4 +62,57 @@ func mySort(inArray []uint64) {
 			i++
 		}
 	}
+}
+
+// Concurrent implementation of the merge sort algorithm
+func myMergeSort(data []uint64) []uint64 {
+	// If the data slice is empty or has one element, it's already sorted
+	if len(data) <= 1 {
+		return data
+	}
+
+	mid := len(data) / 2    // Find the middle index
+	var wait sync.WaitGroup // Declare a wait group to synchronize goroutines
+	wait.Add(2)             // Add two counts to the wait group for the two goroutines we will launch
+
+	var left, right []uint64 // Declare slices to hold the left and right halves
+
+	// Concurrently sort the left half
+	go func() {
+		left = myMergeSort(data[:mid])
+		wait.Done()
+	}()
+	// Concurrently sort the right half
+	go func() {
+		right = myMergeSort(data[mid:])
+		wait.Done()
+	}()
+
+	wait.Wait() // Wait for both halves to be sorted
+
+	return myMerge(left, right) // Merge the sorted halves and return the result
+}
+
+// Merges the two sorted slices together
+func myMerge(left, right []uint64) []uint64 {
+
+	result := make([]uint64, 0, len(left)+len(right)) // Create a slice to hold the merged result
+	i, j := 0, 0                                      // Initialize indices for iterating over the left and right slices
+
+	// Merge the slices until one is exhausted
+	for i < len(left) && j < len(right) {
+		if left[i] <= right[j] {
+			result = append(result, left[i])
+			i++
+		} else {
+			result = append(result, right[j])
+			j++
+		}
+	}
+
+	// Append any remaining elements from left and right
+	result = append(result, left[i:]...)
+	result = append(result, right[j:]...)
+
+	return result
 }
