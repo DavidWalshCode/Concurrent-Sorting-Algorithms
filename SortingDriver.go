@@ -15,7 +15,10 @@ func main() {
 
 	startTime := time.Now() // Start the timer to measure execution time
 
-	sortedData := sorting.MergeSort(data) // Sort the data using the concurrent merge sort algorithm
+	//sortedData := sorting.MergeSort(data) // Sort the data using the concurrent merge sort algorithm
+	//sortedData := sorting.ShellSort(data) // Sort the data using the concurrent shell sort algorithm
+	sortedData := sorting.CountingSort(data, len(data)) // Sort the data using the concurrent counting sort algorithm
+	//sortedData := sorting.HeapSort(data) // Sort the data using the concurrent heap sort algorithm
 
 	// Calculate the elapsed time since the timer started
 	elapsed := time.Since(startTime)
@@ -25,7 +28,7 @@ func main() {
 	println("Execution time:", elapsed.Nanoseconds(), "nanoseconds")
 
 	// Write the sorted data to out.csv
-	if err := readwrite.WriteCSV("output/outMergeSort.csv", sortedData); err != nil {
+	if err := readwrite.WriteCSV("output/outCountingSort.csv", sortedData); err != nil {
 		panic(err)
 	}
 }
