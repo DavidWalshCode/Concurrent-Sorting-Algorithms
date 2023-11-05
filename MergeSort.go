@@ -8,8 +8,8 @@ import (
 	"time"
 )
 
-// Reads integers from a CSV file
-func ReadCSV(filename string) ([]int, error) {
+// Reads an integer array from a CSV file
+func readCSV(filename string) ([]int, error) {
 	// Open the CSV file for reading
 	file, err := os.Open(filename)
 	if err != nil {
@@ -44,8 +44,8 @@ func ReadCSV(filename string) ([]int, error) {
 	return data, nil
 }
 
-// Writes integers to a CSV file
-func WriteCSV(filename string, data []int) error {
+// Writes the integer array to a CSV file
+func writeCSV(filename string, data []int) error {
 	// Create the CSV file for writing
 	file, err := os.Create(filename)
 	if err != nil {
@@ -124,7 +124,7 @@ func merge(left, right []int) []int {
 
 func main() {
 	// Read data from in.csv
-	data, err := ReadCSV("in.csv")
+	data, err := readCSV("in.csv")
 	if err != nil {
 		panic(err)
 	}
@@ -141,7 +141,7 @@ func main() {
 	println("Execution time:", elapsed.Nanoseconds(), "nanoseconds")
 
 	// Write the sorted data to out.csv
-	if err := WriteCSV("out.csv", sortedData); err != nil {
+	if err := writeCSV("out.csv", sortedData); err != nil {
 		panic(err)
 	}
 }
