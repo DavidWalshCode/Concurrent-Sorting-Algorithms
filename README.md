@@ -1,7 +1,8 @@
 # Concurrent Sort Algorithms
 Different implementations of concurrent sort algorithms in Go for CS4207 Advanced Programming Concepts &amp; Practices
 
-Compare the execution time of these algorithms and display the generated results (execution times)
+Compare the execution time of these algorithms and display them
+
 
 *Rules*
 
