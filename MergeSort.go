@@ -51,6 +51,7 @@ func WriteCSV(filename string, data []int) error {
 	if err != nil {
 		return err
 	}
+
 	defer file.Close() // Ensure the file is closed when the function returns
 
 	writer := csv.NewWriter(file) // Create a new CSV writer
@@ -123,7 +124,7 @@ func merge(left, right []int) []int {
 
 func main() {
 	// Read data from in.csv
-	data, err := ReadCSV("in1.csv")
+	data, err := ReadCSV("in.csv")
 	if err != nil {
 		panic(err)
 	}
