@@ -1,4 +1,4 @@
-package main
+package readwrite
 
 import (
 	"encoding/csv"
@@ -8,7 +8,7 @@ import (
 	"time"
 )
 
-func main() {
+func WriteIntArrayCSV() {
 	// Seed the random number generator
 	rand.Seed(time.Now().UnixNano())
 
