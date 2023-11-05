@@ -124,7 +124,7 @@ func merge(left, right []int) []int {
 
 func main() {
 	// Read data from in.csv
-	data, err := ReadCSV("inbig.csv")
+	data, err := ReadCSV("in.csv")
 	if err != nil {
 		panic(err)
 	}
