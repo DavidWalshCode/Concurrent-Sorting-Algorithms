@@ -3,10 +3,10 @@ package sorting
 import "sync"
 
 // Concurrent counting sort algorithm
-func CountingSort(input []int, maxVal int) []int {
-	// Find the range of input values
+func CountingSort(data []int, maxVal int) []int {
+	// Find the range of data values
 	minVal := maxVal
-	for _, num := range input {
+	for _, num := range data {
 		if num < minVal {
 			minVal = num
 		}
@@ -16,11 +16,11 @@ func CountingSort(input []int, maxVal int) []int {
 	offset := -minVal
 	size := maxVal - minVal + 1
 	count := make([]int, size)
-	result := make([]int, len(input))
+	result := make([]int, len(data))
 
 	// Concurrently count the occurrences of each number
 	var wait sync.WaitGroup
-	for _, num := range input {
+	for _, num := range data {
 		wait.Add(1)
 		go func(n int) {
 			defer wait.Done()
@@ -35,7 +35,7 @@ func CountingSort(input []int, maxVal int) []int {
 	}
 
 	// Build the output array
-	for _, num := range input {
+	for _, num := range data {
 		result[count[num+offset]-1] = num
 		count[num+offset]--
 	}
