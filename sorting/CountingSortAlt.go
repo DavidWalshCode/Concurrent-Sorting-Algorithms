@@ -1,53 +1,74 @@
 package sorting
 
-import "sync"
+import (
+	"runtime"
+	"sync"
+)
 
-// Concurrent counting sort alt algorithm
-func CountingSortAlt(input []int, maxVal int) []int {
-	// Find the range of input values by identifying the smallest value
-	minVal := maxVal
-	for _, num := range input {
+func CountingSortAlt(data []int, maxVal int) []int {
+	// Find the range of data values
+	minVal := data[0]
+	for _, num := range data {
 		if num < minVal {
 			minVal = num
 		}
+		if num > maxVal {
+			maxVal = num
+		}
 	}
 
-	// Initialize the slices for counting and the result
-	// The offset is used to adjust negative indices since slices cannot have negative indices.
 	offset := -minVal
-	// Size is the number of possible values in the input
 	size := maxVal - minVal + 1
-	// Count slice keeps track of the number of times each value appears
-	count := make([]int, size)
-	// Result slice will contain the sorted elements
-	result := make([]int, len(input))
+	result := make([]int, len(data))
 
-	// Concurrently count the occurrences of each number
-	var wait sync.WaitGroup
-	for _, num := range input {
-		// Increment the WaitGroup counter before starting a goroutine
-		wait.Add(1)
-		// Start a new goroutine for each number in the input
-		go func(n int) {
-			defer wait.Done() // Decrement the WaitGroup counter when the goroutine completes
-			count[n+offset]++ // Increment the count for the number
-		}(num)
+	// Use the number of CPU cores to limit concurrency
+	numCPU := runtime.NumCPU()
+	chunkSize := (len(data) + numCPU - 1) / numCPU
+
+	// Create a slice of slices to hold local counts
+	localCounts := make([][]int, numCPU)
+	for i := range localCounts {
+		localCounts[i] = make([]int, size)
 	}
-	// Wait for all goroutines to finish
+
+	var wait sync.WaitGroup
+
+	// Process chunks concurrently
+	for i := 0; i < numCPU; i++ {
+		wait.Add(1)
+		go func(chunkStart int) {
+			defer wait.Done()
+			chunkEnd := chunkStart + chunkSize
+			if chunkEnd > len(data) {
+				chunkEnd = len(data)
+			}
+			localCount := localCounts[chunkStart/chunkSize]
+			for _, num := range data[chunkStart:chunkEnd] {
+				localCount[num+offset]++
+			}
+		}(i * chunkSize)
+	}
+
 	wait.Wait()
 
-	// Sum up the counts to get the starting index for each number
+	// Merge local counts
+	globalCount := make([]int, size)
+	for _, localCount := range localCounts {
+		for i := 0; i < size; i++ {
+			globalCount[i] += localCount[i]
+		}
+	}
+
+	// Sum up the counts
 	for i := 1; i < size; i++ {
-		count[i] += count[i-1]
+		globalCount[i] += globalCount[i-1]
 	}
 
-	// Build the output array using the counts to determine the positions
-	for _, num := range input {
-		// Place the number in the result slice based on the count, then decrement the count
-		result[count[num+offset]-1] = num
-		count[num+offset]--
+	// Build the output array
+	for _, num := range data {
+		result[globalCount[num+offset]-1] = num
+		globalCount[num+offset]--
 	}
 
-	// Return the sorted result
 	return result
 }
