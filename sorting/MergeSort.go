@@ -9,24 +9,24 @@ func MergeSort(data []int) []int {
 		return data
 	}
 
-	mid := len(data) / 2    // Find the middle index
-	var wait sync.WaitGroup // Declare a wait group to synchronize goroutines
-	wait.Add(2)             // Add two counts to the wait group for the two goroutines we will launch
+	mid := len(data) / 2     // Find the middle index
+	var waitG sync.WaitGroup // Declare a wait group to synchronize goroutines
+	waitG.Add(2)             // Add two counts to the wait group for the two goroutines we will launch
 
 	var left, right []int // Declare slices to hold the left and right halves
 
 	// Concurrently sort the left half
 	go func() {
 		left = MergeSort(data[:mid])
-		wait.Done()
+		waitG.Done()
 	}()
 	// Concurrently sort the right half
 	go func() {
 		right = MergeSort(data[mid:])
-		wait.Done()
+		waitG.Done()
 	}()
 
-	wait.Wait() // Wait for both halves to be sorted
+	waitG.Wait() // Wait for both halves to be sorted
 
 	return merge(left, right) // Merge the sorted halves and return the result
 }
