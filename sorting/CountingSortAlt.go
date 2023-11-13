@@ -5,8 +5,9 @@ import (
 	"sync"
 )
 
-func CountingSortAlt(data []int, maxVal int) []int {
+func CountingSortAlt(data []int) []int {
 	// Find the range of data values
+	maxVal := len(data)
 	minVal := data[0]
 	for _, num := range data {
 		if num < minVal {

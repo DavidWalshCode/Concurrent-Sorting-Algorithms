@@ -3,12 +3,16 @@ package sorting
 import "sync"
 
 // Concurrent counting sort algorithm
-func CountingSort(data []int, maxVal int) []int {
+func CountingSort(data []int) []int {
 	// Find the range of data values
-	minVal := maxVal
+	maxVal := len(data)
+	minVal := data[0]
 	for _, num := range data {
 		if num < minVal {
 			minVal = num
+		}
+		if num > maxVal {
+			maxVal = num
 		}
 	}
 
