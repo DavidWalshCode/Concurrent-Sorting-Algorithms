@@ -28,7 +28,7 @@ func main() {
 	elapsed := time.Since(start)
 
 	// Write the sorted numbers to the output CSV file. Change the studentID to yours.
-	err = writeNumbers("out(studentID).csv", numbers)
+	err = writeNumbers("out(20276885).csv", numbers)
 	if err != nil {
 		log.Fatalf("Error writing numbers: %v", err)
 	}
