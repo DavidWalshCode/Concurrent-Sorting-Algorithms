@@ -7,18 +7,17 @@ import (
 
 func CountingSortAlt(data []int) []int {
 	// Find the range of data values
-	maxVal := len(data)
-	minVal := data[0]
-	for _, num := range data {
+	maxVal := 9999
+	minVal := -9999
+	/*for _, num := range data {
 		if num < minVal {
 			minVal = num
 		}
 		if num > maxVal {
 			maxVal = num
 		}
-	}
+	}*/
 
-	offset := -minVal
 	size := maxVal - minVal + 1
 	result := make([]int, len(data))
 
@@ -45,7 +44,7 @@ func CountingSortAlt(data []int) []int {
 			}
 			localCount := localCounts[chunkStart/chunkSize]
 			for _, num := range data[chunkStart:chunkEnd] {
-				localCount[num+offset]++
+				localCount[num+maxVal]++
 			}
 		}(i * chunkSize)
 	}
@@ -67,8 +66,8 @@ func CountingSortAlt(data []int) []int {
 
 	// Build the output array
 	for _, num := range data {
-		result[globalCount[num+offset]-1] = num
-		globalCount[num+offset]--
+		result[globalCount[num+maxVal]-1] = num
+		globalCount[num+maxVal]--
 	}
 
 	return result
