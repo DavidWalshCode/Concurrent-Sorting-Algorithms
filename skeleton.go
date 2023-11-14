@@ -20,6 +20,9 @@ func main() {
 		log.Fatalf("Error reading numbers: %v", err)
 	}
 
+	coreCount := runtime.NumCPU()
+	runtime.GOMAXPROCS(coreCount)
+
 	// Record the start time.
 	start := time.Now()
 

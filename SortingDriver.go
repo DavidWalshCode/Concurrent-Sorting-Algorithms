@@ -4,6 +4,7 @@ import (
 	"Concurrent-Sort-Algorithms/readandwrite"
 	"Concurrent-Sort-Algorithms/sorting"
 	"fmt"
+	"runtime"
 	"time"
 )
 
@@ -13,6 +14,9 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+
+	coreCount := runtime.NumCPU()
+	runtime.GOMAXPROCS(coreCount)
 
 	startTime := time.Now() // Start the timer to measure execution time
 
@@ -25,6 +29,9 @@ func main() {
 
 	// Calculate the elapsed time since the timer started
 	elapsed := time.Since(startTime)
+
+	// Printing
+	fmt.Printf("Running with %d cores\n", coreCount)
 	fmt.Printf("Sorted %d numbers in:\n", len(sortedData))
 	println(" -", elapsed.Seconds(), "seconds")
 	println(" -", elapsed.Milliseconds(), "milliseconds")
