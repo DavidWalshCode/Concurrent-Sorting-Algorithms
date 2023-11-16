@@ -1,28 +1,28 @@
 package sorting
 
 import (
-	"runtime"
 	"sync"
 )
 
 func CountingSortAlt(data []int) []int {
 	// Find the range of data values
-	maxVal := 9999
-	minVal := -9999
-	/*for _, num := range data {
+	maxVal := len(data)
+	minVal := data[0]
+	for _, num := range data {
 		if num < minVal {
 			minVal = num
 		}
 		if num > maxVal {
 			maxVal = num
 		}
-	}*/
+	}
 
+	offset := -minVal
 	size := maxVal - minVal + 1
 	result := make([]int, len(data))
 
 	// Use the number of CPU cores to limit concurrency
-	numCPU := runtime.NumCPU()
+	numCPU := 1 //runtime.NumCPU()
 	chunkSize := (len(data) + numCPU - 1) / numCPU
 
 	// Create a slice of slices to hold local counts
@@ -44,7 +44,7 @@ func CountingSortAlt(data []int) []int {
 			}
 			localCount := localCounts[chunkStart/chunkSize]
 			for _, num := range data[chunkStart:chunkEnd] {
-				localCount[num+maxVal]++
+				localCount[num+offset]++
 			}
 		}(i * chunkSize)
 	}
@@ -66,8 +66,8 @@ func CountingSortAlt(data []int) []int {
 
 	// Build the output array
 	for _, num := range data {
-		result[globalCount[num+maxVal]-1] = num
-		globalCount[num+maxVal]--
+		result[globalCount[num+offset]-1] = num
+		globalCount[num+offset]--
 	}
 
 	return result
