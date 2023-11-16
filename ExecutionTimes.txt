@@ -1,257 +1,225 @@
-Execution Times (Run 20 times each)
+Execution Times (Ran 20 times each)
 
 // MERGE SORT
 4-Cores:
-Best Execution Time -
-Worst Execution Time -
-Average Execution Time -
+Best Execution Time - 8.7973ms
+Worst Execution Time - 11.8568ms
+Average Execution Time - 9.5459ms
 
 3-Cores:
-Best Execution Time -
-Worst Execution Time -
-Average Execution Time -
+Best Execution Time - 8.3393ms
+Worst Execution Time - 20.7277ms
+Average Execution Time - 10.6505ms
 
 2-Cores:
-Best Execution Time -
-Worst Execution Time -
-Average Execution Time -
+Best Execution Time - 10.1675ms
+Worst Execution Time - 14.6848ms
+Average Execution Time - 11.9380ms
 
 1-Core:
-Best Execution Time -
-Worst Execution Time -
-Average Execution Time -
+Best Execution Time - 14.5099ms
+Worst Execution Time - 18.1191ms
+Average Execution Time - 15.8385ms
 
 
 // COUNTING SORT
 4-Cores:
-Best Execution Time -
-Worst Execution Time -
-Average Execution Time -
+Best Execution Time - 2.9972ms
+Worst Execution Time - 7.9593ms
+Average Execution Time - 4.8396ms
 
 3-Cores:
-Best Execution Time -
-Worst Execution Time -
-Average Execution Time -
+Best Execution Time - 3.5235ms
+Worst Execution Time - 13.5474ms
+Average Execution Time - 5.3886ms
 
 2-Cores:
-Best Execution Time -
-Worst Execution Time -
-Average Execution Time -
+Best Execution Time - 3.9993ms
+Worst Execution Time - 8.5609ms
+Average Execution Time - 5.2245ms
 
 1-Core:
-Best Execution Time -
-Worst Execution Time -
-Average Execution Time -
+Best Execution Time - 5.5147ms
+Worst Execution Time - 10.5218ms
+Average Execution Time - 7.5923ms
 
 
 
 // MERGE SORT ALL EXECUTION TIMES
 4-Cores:
-1.
-2.
-3.
-4.
-5.
-6.
-7.
-8.
-9.
-10.
-11.
-12.
-13.
-14.
-15.
-16.
-17.
-18
-19.
-20.
-
-Best Execution Time -
-Worst Execution Time -
-Average Execution Time -
+1. 9.6603ms
+2. 9.8765ms
+3. 8.9283ms
+4. 9.3196ms
+5. 9.4131ms
+6. 9.6666ms
+7. 9.9473ms
+8. 8.7973ms
+9. 9.6444ms
+10. 10.1255ms
+11. 9.7533ms
+12. 11.8568ms
+13. 8.9254ms
+14. 8.9396ms
+15. 9.0221ms
+16. 9.1835ms
+17. 9.361ms
+18. 9.6312ms
+19. 9.6894ms
+20. 9.1766ms
 
 3-Cores:
-1.
-2.
-3.
-4.
-5.
-6.
-7.
-8.
-9.
-10.
-11.
-12.
-13.
-14.
-15.
-16.
-17.
-18
-19.
-20.
-
-Best Execution Time -
-Worst Execution Time -
-Average Execution Time -
+1. 20.7277ms
+2. 11.3542ms
+3. 11.2247ms
+4. 10.43ms
+5. 9.5617ms
+6. 9.4197ms
+7. 8.3393ms
+8. 9.2775ms
+9. 10.7384ms
+10. 9.3131ms
+11. 9.8839ms
+12. 11.1419ms
+13. 10.3944ms
+14. 11.1376ms
+15. 10.6646ms
+16. 9.805ms
+17. 9.7886ms
+18. 9.6534ms
+19. 10.449ms
+20. 9.7054ms
 
 2-Cores:
-1.
-2.
-3.
-4.
-5.
-6.
-7.
-8.
-9.
-10.
-11.
-12.
-13.
-14.
-15.
-16.
-17.
-18
-19.
-20.
-
-Best Execution Time -
-Worst Execution Time -
-Average Execution Time -
+1. 12.4383ms
+2. 12.5633ms
+3. 12.3533ms
+4. 11.5127ms
+5. 13.5114ms
+6. 14.0341ms
+7. 14.6848ms
+8. 12.2818ms
+9. 10.9695ms
+10. 12.7679ms
+11. 11.7336ms
+12. 11.0125ms
+13. 12.1095ms
+14. 11.8104ms
+15. 11.753ms
+16. 10.5262ms
+17. 10.1675ms
+18. 10.5108ms
+19. 11.5091ms
+20. 10.5107ms
 
 1-Core:
-1.
-2.
-3.
-4.
-5.
-6.
-7.
-8.
-9.
-10.
-11.
-12.
-13.
-14.
-15.
-16.
-17.
-18
-19.
-20.
-
-Best Execution Time -
-Worst Execution Time -
-Average Execution Time -
+1. 14.836ms
+2. 16.0118ms
+3. 15.5213ms
+4. 17.0226ms
+5. 16.5095ms
+6. 15.0242ms
+7. 16.5159ms
+8. 16.024ms
+9. 14.5103ms
+10. 17.0222ms
+11. 14.5103ms
+12. 17.0463ms
+13. 14.5099ms
+14. 15.6098ms
+15. 18.1191ms
+16. 16.5807ms
+17. 15.1254ms
+18. 14.5833ms
+19. 16.0991ms
+20. 15.5886ms
 
 
 // COUNTING SORT ALL EXECUTION TIMES
 4-Cores:
-1.
-2.
-3.
-4.
-5.
-6.
-7.
-8.
-9.
-10.
-11.
-12.
-13.
-14.
-15.
-16.
-17.
-18
-19.
-20.
-
-Best Execution Time -
-Worst Execution Time -
-Average Execution Time -
+1. 6.5602ms
+2. 7.9593ms
+3. 6.5254ms
+4. 4.9977ms
+5. 6.5131ms
+6. 4.5119ms
+7. 4.1621ms
+8. 2.9972ms
+9. 4.0044ms
+10. 4.0015ms
+11. 3.9982ms
+12. 6.2458ms
+13. 4.9728ms
+14. 3.2085ms
+15. 5.1809ms
+16. 3.7937ms
+17. 3.728ms
+18. 4.2484ms
+19. 5.9234ms
+20. 3.2602ms
 
 3-Cores:
-1.
-2.
-3.
-4.
-5.
-6.
-7.
-8.
-9.
-10.
-11.
-12.
-13.
-14.
-15.
-16.
-17.
-18
-19.
-20.
-
-Best Execution Time -
-Worst Execution Time -
-Average Execution Time -
+1. 13.5474ms
+2. 7.1286ms
+3. 4.9992ms
+4. 7.1119ms
+5. 3.9979ms
+6. 4.1732ms
+7. 6.0017ms
+8. 3.5235ms
+9. 4.0003ms
+10. 5.7076ms
+11. 4.9981ms
+12. 5.518ms
+13. 6.5113ms
+14. 4.9976ms
+15. 4.5076ms
+16. 4.0092ms
+17. 3.9985ms
+18. 4.521ms
+19. 4.0009ms
+20. 4.5178ms
 
 2-Cores:
-1.
-2.
-3.
-4.
-5.
-6.
-7.
-8.
-9.
-10.
-11.
-12.
-13.
-14.
-15.
-16.
-17.
-18
-19.
-20.
-
-Best Execution Time -
-Worst Execution Time -
-Average Execution Time -
+1. 6.5916ms
+2. 6.1055ms
+3. 6.522ms
+4. 8.5609ms
+5. 5.5069ms
+6. 6.011ms
+7. 5.5132ms
+8. 4.0005ms
+9. 3.9993ms
+10. 4.5402ms
+11. 4.9961ms
+12. 5.5381ms
+13. 4.002ms
+14. 4.521ms
+15. 4.0016ms
+16. 4.5273ms
+17. 5.9921ms
+18. 4.5254ms
+19. 4.5147ms
+20. 4.52ms
 
 1-Core:
-1.
-2.
-3.
-4.
-5.
-6.
-7.
-8.
-9.
-10.
-11.
-12.
-13.
-14.
-15.
-16.
-17.
-18
-19.
-20.
-
-Best Execution Time -
-Worst Execution Time -
-Average Execution Time -
+1. 8.5114ms
+2. 9.5068ms
+3. 7.0115ms
+4. 10.0522ms
+5. 10.5218ms
+6. 10.5194ms
+7. 9.5115ms
+8. 8.5249ms
+9. 6.517ms
+10. 6.0044ms
+11. 6.5198ms
+12. 7.5084ms
+13. 6.0106ms
+14. 5.5147ms
+15. 6.0021ms
+16. 5.5374ms
+17. 7.0179ms
+18. 6.0118ms
+19. 8.5144ms
+20. 6.5288ms
