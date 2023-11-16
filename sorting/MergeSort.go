@@ -21,6 +21,7 @@ func mergeSortConcurrent(data []int, depth int) []int {
 
 	mid := len(data) / 2
 	var left, right []int
+
 	var waitGroup sync.WaitGroup
 	waitGroup.Add(2)
 
@@ -36,6 +37,7 @@ func mergeSortConcurrent(data []int, depth int) []int {
 	}()
 
 	waitGroup.Wait()
+
 	return merge(left, right)
 }
 
@@ -48,6 +50,7 @@ func mergeSortSequential(data []int) []int {
 	mid := len(data) / 2
 	left := mergeSortSequential(data[:mid])
 	right := mergeSortSequential(data[mid:])
+
 	return merge(left, right)
 }
 

@@ -41,13 +41,6 @@ func main() {
 	println(" -", elapsed.Microseconds(), "microseconds")
 	println(" -", elapsed.Nanoseconds(), "nanoseconds")
 
-	for i := 1; i <= 20; i++ {
-		startTime := time.Now()
-		sorting.CountingSortAlt(data)
-		elapsed := time.Since(startTime)
-		fmt.Printf("%s\n", elapsed)
-	}
-
 	// Write the sorted data to out.csv
 	if err := readwrite.WriteCSV("output/out(20276885).csv", sortedData); err != nil {
 		panic(err)
