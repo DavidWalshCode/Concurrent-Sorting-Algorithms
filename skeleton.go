@@ -15,7 +15,7 @@ import (
 
 func main() {
 	// Read numbers from the input CSV file.
-	numbers, err := readNumbers("numbers.csv")
+	numbers, err := readNumbers("input/numbers.csv")
 	if err != nil {
 		log.Fatalf("Error reading numbers: %v", err)
 	}
@@ -34,7 +34,7 @@ func main() {
 	elapsed := time.Since(start)
 
 	// Write the sorted numbers to the output CSV file. Change the studentID to yours.
-	err = writeNumbers("out(20276885).csv", sortedNumbers)
+	err = writeNumbers("output/out(20276885).csv", sortedNumbers)
 	if err != nil {
 		log.Fatalf("Error writing numbers: %v", err)
 	}
@@ -120,7 +120,7 @@ func countingSort(data []int) []int {
 	result := make([]int, len(data))
 
 	// Use the number of CPU cores to limit concurrency
-	numCPU := runtime.NumCPU()
+	numCPU := 1 // runtime.NumCPU()
 	chunkSize := (len(data) + numCPU - 1) / numCPU
 
 	// Create a slice of slices to hold local counts
