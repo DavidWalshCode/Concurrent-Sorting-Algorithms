@@ -10,7 +10,7 @@ import (
 
 func main() {
 	// Read data from in.csv
-	data, err := readwrite.ReadCSV("numbers.csv")
+	data, err := readwrite.ReadCSV("input/numbers.csv")
 	if err != nil {
 		panic(err)
 	}
