@@ -13,7 +13,7 @@ func WriteIntArrayCSV() {
 	rand.Seed(time.Now().UnixNano())
 
 	// Create a file named in.csv
-	file, err := os.Create("inbig2.csv")
+	file, err := os.Create("input/inbig.csv")
 	if err != nil {
 		panic(err)
 	}
@@ -25,9 +25,9 @@ func WriteIntArrayCSV() {
 
 	// Generate and write 10,000 random integers
 	var record []string
-	for i := 0; i < 10000; i++ {
-		// Generate a random integer between -9999 and 9999
-		num := rand.Intn(19999) - 9999
+	for i := 0; i < 100000; i++ {
+		// Generate a random integer between -99999 and 99999
+		num := rand.Intn(199999) - 99999
 		record = append(record, strconv.Itoa(num))
 	}
 
