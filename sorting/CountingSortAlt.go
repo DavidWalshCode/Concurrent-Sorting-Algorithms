@@ -1,6 +1,7 @@
 package sorting
 
 import (
+	"runtime"
 	"sync"
 )
 
@@ -22,7 +23,7 @@ func CountingSortAlt(data []int) []int {
 	result := make([]int, len(data))
 
 	// Use the number of CPU cores to limit concurrency
-	numCPU := 1 //runtime.NumCPU()
+	numCPU := runtime.NumCPU() // 1
 	chunkSize := (len(data) + numCPU - 1) / numCPU
 
 	// Create a slice of slices to hold local counts
@@ -31,13 +32,13 @@ func CountingSortAlt(data []int) []int {
 		localCounts[i] = make([]int, size)
 	}
 
-	var wait sync.WaitGroup
+	var waitGroup sync.WaitGroup
 
 	// Process chunks concurrently
 	for i := 0; i < numCPU; i++ {
-		wait.Add(1)
+		waitGroup.Add(1)
 		go func(chunkStart int) {
-			defer wait.Done()
+			defer waitGroup.Done()
 			chunkEnd := chunkStart + chunkSize
 			if chunkEnd > len(data) {
 				chunkEnd = len(data)
@@ -49,10 +50,11 @@ func CountingSortAlt(data []int) []int {
 		}(i * chunkSize)
 	}
 
-	wait.Wait()
+	waitGroup.Wait()
 
 	// Merge local counts
 	globalCount := make([]int, size)
+
 	for _, localCount := range localCounts {
 		for i := 0; i < size; i++ {
 			globalCount[i] += localCount[i]

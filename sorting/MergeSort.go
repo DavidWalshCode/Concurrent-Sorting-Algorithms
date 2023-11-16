@@ -15,7 +15,7 @@ func mergeSortConcurrent(data []int, depth int) []int {
 	}
 
 	// Using a threshold to limit concurrency
-	if len(data) < 5000 || depth > 6 { // Adjust the threshold and depth limit as needed
+	if len(data) < 4000 || depth > 5 { // Adjust the threshold and depth limit as needed
 		return mergeSortSequential(data)
 	}
 
