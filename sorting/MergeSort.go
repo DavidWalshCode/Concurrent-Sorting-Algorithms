@@ -7,15 +7,15 @@ func MergeSort(data []int) []int {
 	return mergeSortConcurrent(data, 0)
 }
 
-// Helper function that manages concurrency based on slice size
+// Concurrent merge sort that also manages concurrency based on slice size
 func mergeSortConcurrent(data []int, depth int) []int {
 	// If a slice of length 1 or less is already sorted
 	if len(data) <= 1 {
 		return data
 	}
 
-	// Use a threshold to limit concurrency
-	if len(data) < 2048 || depth > 4 { // Adjust the threshold and depth limit as needed
+	// Using a threshold to limit concurrency
+	if len(data) < 5000 || depth > 6 { // Adjust the threshold and depth limit as needed
 		return mergeSortSequential(data)
 	}
 
