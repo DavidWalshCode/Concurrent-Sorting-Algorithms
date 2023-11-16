@@ -1,27 +1,5 @@
 Execution Times (Run 20 times each)
 
-// COUNTING SORT
-4-Cores:
-Best Execution Time -
-Worst Execution Time -
-Average Execution Time -
-
-3-Cores:
-Best Execution Time -
-Worst Execution Time -
-Average Execution Time -
-
-2-Cores:
-Best Execution Time -
-Worst Execution Time -
-Average Execution Time -
-
-1-Core:
-Best Execution Time -
-Worst Execution Time -
-Average Execution Time -
-
-
 // MERGE SORT
 4-Cores:
 Best Execution Time -
@@ -44,7 +22,30 @@ Worst Execution Time -
 Average Execution Time -
 
 
-// COUNTING SORT ALL EXECUTION TIMES
+// COUNTING SORT
+4-Cores:
+Best Execution Time -
+Worst Execution Time -
+Average Execution Time -
+
+3-Cores:
+Best Execution Time -
+Worst Execution Time -
+Average Execution Time -
+
+2-Cores:
+Best Execution Time -
+Worst Execution Time -
+Average Execution Time -
+
+1-Core:
+Best Execution Time -
+Worst Execution Time -
+Average Execution Time -
+
+
+
+// MERGE SORT ALL EXECUTION TIMES
 4-Cores:
 1.
 2.
@@ -150,7 +151,7 @@ Worst Execution Time -
 Average Execution Time -
 
 
-// MERGE SORT ALL EXECUTION TIMES
+// COUNTING SORT ALL EXECUTION TIMES
 4-Cores:
 1.
 2.
