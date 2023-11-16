@@ -4,40 +4,58 @@ import "sync"
 
 // Concurrent merge sort algorithm
 func MergeSort(data []int) []int {
-	// If the data slice is empty or has one element, it's already sorted
+	return mergeSortConcurrent(data, 0)
+}
+
+// Helper function that manages concurrency based on slice size
+func mergeSortConcurrent(data []int, depth int) []int {
+	// If a slice of length 1 or less is already sorted
 	if len(data) <= 1 {
 		return data
 	}
 
-	mid := len(data) / 2     // Find the middle index
-	var waitG sync.WaitGroup // Declare a wait group to synchronize goroutines
-	waitG.Add(2)             // Add two counts to the wait group for the two goroutines we will launch
+	// Use a threshold to limit concurrency
+	if len(data) < 2048 || depth > 4 { // Adjust the threshold and depth limit as needed
+		return mergeSortSequential(data)
+	}
 
-	var left, right []int // Declare slices to hold the left and right halves
+	mid := len(data) / 2
+	var left, right []int
+	var waitGroup sync.WaitGroup
+	waitGroup.Add(2)
 
 	// Concurrently sort the left half
 	go func() {
-		left = MergeSort(data[:mid])
-		waitG.Done()
+		left = mergeSortConcurrent(data[:mid], depth+1)
+		waitGroup.Done()
 	}()
 	// Concurrently sort the right half
 	go func() {
-		right = MergeSort(data[mid:])
-		waitG.Done()
+		right = mergeSortConcurrent(data[mid:], depth+1)
+		waitGroup.Done()
 	}()
 
-	waitG.Wait() // Wait for both halves to be sorted
-
-	return merge(left, right) // Merge the sorted halves and return the result
+	waitGroup.Wait()
+	return merge(left, right)
 }
 
-// Merges the two sorted slices together
+// Sequential merge sort for smaller slices
+func mergeSortSequential(data []int) []int {
+	if len(data) <= 1 {
+		return data
+	}
+
+	mid := len(data) / 2
+	left := mergeSortSequential(data[:mid])
+	right := mergeSortSequential(data[mid:])
+	return merge(left, right)
+}
+
+// Merges two sorted slices
 func merge(left, right []int) []int {
+	result := make([]int, 0, len(left)+len(right))
+	i, j := 0, 0
 
-	result := make([]int, 0, len(left)+len(right)) // Create a slice to hold the merged result
-	i, j := 0, 0                                   // Initialize indices for iterating over the left and right slices
-
-	// Merge the slices until one is exhausted
 	for i < len(left) && j < len(right) {
 		if left[i] <= right[j] {
 			result = append(result, left[i])
@@ -48,7 +66,6 @@ func merge(left, right []int) []int {
 		}
 	}
 
-	// Append any remaining elements from left and right
 	result = append(result, left[i:]...)
 	result = append(result, right[j:]...)
 
