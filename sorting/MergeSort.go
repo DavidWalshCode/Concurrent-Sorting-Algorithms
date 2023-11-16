@@ -56,21 +56,21 @@ func mergeSortSequential(data []int) []int {
 
 // Merges two sorted slices
 func merge(left, right []int) []int {
-	result := make([]int, 0, len(left)+len(right))
+	sortedResult := make([]int, 0, len(left)+len(right))
 	i, j := 0, 0
 
 	for i < len(left) && j < len(right) {
 		if left[i] <= right[j] {
-			result = append(result, left[i])
+			sortedResult = append(sortedResult, left[i])
 			i++
 		} else {
-			result = append(result, right[j])
+			sortedResult = append(sortedResult, right[j])
 			j++
 		}
 	}
 
-	result = append(result, left[i:]...)
-	result = append(result, right[j:]...)
+	sortedResult = append(sortedResult, left[i:]...)
+	sortedResult = append(sortedResult, right[j:]...)
 
-	return result
+	return sortedResult
 }

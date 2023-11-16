@@ -20,10 +20,10 @@ func CountingSort(data []int) []int {
 
 	offset := -minVal
 	size := maxVal - minVal + 1
-	result := make([]int, len(data))
+	sortedResult := make([]int, len(data))
 
 	// Use the number of CPU cores to limit concurrency
-	numCPU := runtime.NumCPU() // 1
+	numCPU := runtime.NumCPU()
 	chunkSize := (len(data) + numCPU - 1) / numCPU
 
 	// Create a slice of slices to hold local counts
@@ -68,9 +68,9 @@ func CountingSort(data []int) []int {
 
 	// Build the output array
 	for _, num := range data {
-		result[globalCount[num+offset]-1] = num
+		sortedResult[globalCount[num+offset]-1] = num
 		globalCount[num+offset]--
 	}
 
-	return result
+	return sortedResult
 }
