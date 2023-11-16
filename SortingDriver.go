@@ -24,9 +24,7 @@ func main() {
 	startTime := time.Now() // Start the timer to measure execution time
 
 	//sortedData := sorting.MergeSort(data) // Sort the data using the concurrent merge sort algorithm
-	//sortedData := sorting.CountingSort(data) // Sort the data using the concurrent counting sort algorithm
-	sortedData := sorting.CountingSortAlt(data) // Sort the data using the concurrent counting sort algorithm
-	//sortedData := sorting.CountingSort2(data) // Sort the data using the concurrent counting sort algorithm
+	sortedData := sorting.CountingSort(data) // Sort the data using the concurrent counting sort algorithm
 	//sortedData := sorting.HeapSort(data) // Sort the data using the concurrent heap sort algorithm
 	//sortedData := sorting.ShellSort(data) // Sort the data using the concurrent shell sort algorithm
 
