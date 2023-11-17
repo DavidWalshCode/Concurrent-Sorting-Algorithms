@@ -39,7 +39,7 @@ func CountingSort(data []int) []int {
 	var waitGroup sync.WaitGroup
 
 	// Process chunks concurrently
-	for i := 0; i < numCPU; i++ { // Loop iterates for each available CPU Core (4 for me).  The idea is to create a separate goroutine for each chunk of the data to be sorted, allowing these chunks to be processed in parallel
+	for i := 0; i < numCPU; i++ { // Loop iterates for each available CPU Core (4 for me). The idea is to create a separate goroutine for each chunk of the data to be sorted, allowing these chunks to be processed in parallel
 		waitGroup.Add(1)
 		go func(chunkStart int) { // chunkStart represents the starting index of the data chunk that this particular goroutine will process
 			defer waitGroup.Done()
