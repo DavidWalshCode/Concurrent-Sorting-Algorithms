@@ -8,9 +8,8 @@ import (
 	"time"
 )
 
-// David Walsh 20276885
 func main() {
-	// Read data from in.csv
+	// Read data from .csv
 	data, err := readwrite.ReadCSV("input/numbers.csv")
 	if err != nil {
 		panic(err)
@@ -40,7 +39,7 @@ func main() {
 	println(" -", elapsed.Microseconds(), "microseconds")
 	println(" -", elapsed.Nanoseconds(), "nanoseconds")
 
-	// Write the sorted data to out.csv
+	// Write the sorted data to .csv
 	if err := readwrite.WriteCSV("output/out(20276885).csv", sortedData); err != nil {
 		panic(err)
 	}

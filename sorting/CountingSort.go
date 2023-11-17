@@ -5,7 +5,6 @@ import (
 	"sync"
 )
 
-// David Walsh 20276885
 func CountingSort(data []int) []int {
 	if len(data) == 0 {
 		return data
