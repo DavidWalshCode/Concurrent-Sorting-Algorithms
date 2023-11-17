@@ -5,6 +5,7 @@ import (
 	"sync"
 )
 
+// David Walsh 20276885
 func CountingSort(data []int) []int {
 	// Find the range of data values
 	maxVal := len(data)
@@ -54,7 +55,6 @@ func CountingSort(data []int) []int {
 
 	// Merge local counts
 	globalCount := make([]int, size)
-
 	for _, localCount := range localCounts {
 		for i := 0; i < size; i++ {
 			globalCount[i] += localCount[i]

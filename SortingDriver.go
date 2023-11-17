@@ -8,6 +8,7 @@ import (
 	"time"
 )
 
+// David Walsh 20276885
 func main() {
 	// Read data from in.csv
 	data, err := readwrite.ReadCSV("input/numbers.csv")
@@ -23,8 +24,8 @@ func main() {
 
 	startTime := time.Now() // Start the timer to measure execution time
 
-	//sortedData := sorting.MergeSort(data) // Sort the data using the concurrent merge sort algorithm
-	sortedData := sorting.CountingSort(data) // Sort the data using the concurrent counting sort algorithm
+	sortedData := sorting.MergeSort(data) // Sort the data using the concurrent merge sort algorithm
+	//sortedData := sorting.CountingSort(data) // Sort the data using the concurrent counting sort algorithm
 	//sortedData := sorting.HeapSort(data) // Sort the data using the concurrent heap sort algorithm
 	//sortedData := sorting.ShellSort(data) // Sort the data using the concurrent shell sort algorithm
 

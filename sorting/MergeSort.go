@@ -2,7 +2,7 @@ package sorting
 
 import "sync"
 
-// Concurrent merge sort algorithm
+// David Walsh 20276885
 func MergeSort(data []int) []int {
 	return mergeSortConcurrent(data, 0)
 }
