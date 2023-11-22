@@ -43,4 +43,21 @@ func main() {
 	if err := readwrite.WriteCSV("output/out(20276885).csv", sortedData); err != nil {
 		panic(err)
 	}
+
+	// Check if the numbers are sorted or not
+	if isSorted(sortedData) {
+		fmt.Println("The numbers are sorted correctly")
+	} else {
+		fmt.Println("The numbers are not sorted correctly")
+	}
+}
+
+// Check is the numbers are sorted correctly
+func isSorted(numbers []int) bool {
+	for i := 1; i < len(numbers); i++ {
+		if numbers[i-1] > numbers[i] {
+			return false
+		}
+	}
+	return true
 }
